@@ -23,7 +23,10 @@ export default {
   },
 
   props: {
-    active: Array,
+    active: {
+      type: Array,
+      default: () => []
+    },
     all: Array,
   },
 
@@ -96,7 +99,7 @@ export default {
     width: 100%;
     border-radius: 4px;
     box-shadow: 0 0 3px #ccc;
-    background: white;
+    background: #eee;
     z-index: 1;
     padding: 4px;
     .item {

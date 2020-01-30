@@ -20,7 +20,7 @@
       </tr>
       <tr>
         <td>Mô tả</td>
-        <td><textarea v-model="film.description" /></td>
+        <td><textarea v-model="film.description" style="height: 200px" /></td>
       </tr>
       <tr>
         <td>Diễn viên</td>
