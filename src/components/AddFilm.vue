@@ -3,11 +3,11 @@
     <input-search-film v-model="film.name" @choose="chooseFilm" />
     <div class="poster">
       <img ref="posterImage" :src="film.poster">
-      <input ref="posterInput" @change="changeImage('posterImage', $event)" type="file">
+      <input ref="posterInput" @change="changeImage('poster', $event)" type="file">
     </div>
     <div class="banner">
       <img ref="bannerImage" :src="film.banner">
-      <input ref="bannerInput" type="file">
+      <input ref="bannerInput" @change="changeImage('banner', $event)" type="file">
     </div>
     <table>
       <tr>
@@ -116,7 +116,9 @@ export default {
   data() {
     return {
       film: {
-        chapters: []
+        chapters: [],
+        banner: '',
+        poster: ''
       },
       casts: '',
       directors: '',
@@ -139,29 +141,19 @@ export default {
   methods: {
     addFilm() {
       const film = { ...this.film }
+      const formData = new FormData()
 
       film.casts = this.casts
       film.directors = this.directors
 
-      const poster = this.getImage('posterInput')
-      const banner = this.getImage('bannerInput')
+      const poster = this.$refs.posterInput.files[0] || this.film.poster
+      const banner = this.$refs.bannerInput.files[0] || this.film.banner
 
-      axios.post('http://45.76.145.91:8080/apilink/admin/film/insertOrUpdate', {
-        film, poster, banner
-      })
-    },
+      formData.append('film', film)
+      formData.append('poster', poster)
+      formData.append('banner', banner)
 
-    getImage(type) {
-      const files = this.$refs[type].files
-
-      if (files[0]) {
-        const formData = new FormData()
-        formData.append('files[]', files[0])
-
-        return formData
-      }
-
-      return this.film[type.replace('Input', 'Image')]
+      axios.post('http://45.76.145.91:8080/apilink/admin/film/insertOrUpdate', formData)
     },
 
     changeImage(type, $event) {
@@ -171,8 +163,7 @@ export default {
         var reader = new FileReader()
 
         reader.onload = (e) => {
-          const ref = this.$refs[type]
-          ref.setAttribute('src', e.target.result)
+          this.film[type] = e.target.result
         }
 
         reader.readAsDataURL(files[0])
