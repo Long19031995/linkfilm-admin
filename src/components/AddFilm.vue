@@ -146,7 +146,7 @@ export default {
       const poster = this.getImage('posterInput')
       const banner = this.getImage('bannerInput')
 
-      axios.post('http://45.76.145.91:8080/admin/film/insertOrUpdate', {
+      axios.post('http://45.76.145.91:8080/apilink/admin/film/insertOrUpdate', {
         film, poster, banner
       })
     },
