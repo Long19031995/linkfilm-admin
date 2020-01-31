@@ -202,6 +202,7 @@ export default {
                 var reader = new FileReader()
 
                 reader.onload = (e) => {
+                    this.film[type] = ""//chỗ này tao xử lý hơi ngu, nhưng nó lại hoạt động, có gì sửa giúp tao
                     this.film[type] = e.target.result
                 }
 
