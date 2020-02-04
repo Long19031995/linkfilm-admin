@@ -57,7 +57,6 @@
       <tr>
         <td>Tập phim</td>
         <td><button @click="addChapter()">Thêm tập +</button></td>
-        <td><button @click="addFilm()">Thêm | Cập nhật</button></td>
       </tr>
     </table>
     <table class="table">
@@ -110,6 +109,14 @@
     <br/>
     <br/>
     <br/>
+    <button @click="addFilm()" class="update-film">
+        <template v-if="loading">
+            ...
+        </template>
+        <template v-else>
+            Thêm | Cập nhật
+        </template>
+    </button>
   </div>
 </template>
 
@@ -142,7 +149,8 @@ export default {
             nations: [],
             genres: [],
             qualities: [],
-            webs: []
+            webs: [],
+            loading: false,
         }
     },
 
@@ -155,7 +163,9 @@ export default {
     },
 
     methods: {
-        addFilm() {
+        async addFilm() {
+            this.loading = true
+
             const film = {
                 ...this.film
             }
@@ -173,16 +183,18 @@ export default {
             formData.append('poster', poster)
             formData.append('banner', banner)
 
-            axios.post('http://45.76.145.91:8080/apilink/admin/film/insertOrUpdate', formData)
+            await axios.post('http://45.76.145.91:8080/apilink/admin/film/insertOrUpdate', formData)
+
+            this.loading = false
         },
 
         /**
          * chuyển đổi từ string sang topic
          * các name topic cách nhau bằng dấu phẩy trong text
          * phục vụ cho diễn viên và đạo diễn
-         * 
+         *
          * @text đây là dữ liệu cần tách để tạo ra các topic
-         * @typeTopic type của topic, type có thể có các giá trị sau: 
+         * @typeTopic type của topic, type có thể có các giá trị sau:
          *    SYSTEM(0, "Hệ thống"),
          *    CAST(1, "Diễn viên"),
          *    DIRECTOR(2, "Đạo diễn"),
@@ -194,6 +206,7 @@ export default {
          *    WEB(8, "Web phim")
          */
         convertStringToListTopic(text, typeTopic) {
+            if (!text.length) return
             const listStr = text.split(", ") // lấy tên của các topic
             const listTopic = Array(listStr.length)
 
@@ -426,5 +439,15 @@ textarea {
 textarea {
     height: 64px;
     padding: 8px;
+}
+
+.update-film {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: green;
+    color: white;
+    width: 100%;
+    height: 56px;
 }
 </style>
