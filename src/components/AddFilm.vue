@@ -31,6 +31,10 @@
         <td><input v-model="directors" type="text"></td>
       </tr>
       <tr>
+        <td>Tags</td>
+        <td><input v-model="tags" type="text"></td>
+      </tr>
+      <tr>
         <td>Năm phát hành</td>
         <td><input-dropdown v-model="film.releases" :all="releases"/></td>
       </tr>
@@ -124,8 +128,9 @@ export default {
                 banner: '',
                 poster: ''
             },
-            casts: '',
-            directors: '',
+            casts: [],
+            directors: [],
+            tags: [],
             releases: [],
             nations: [],
             genres: [],
@@ -151,6 +156,8 @@ export default {
 
             film.casts = this.convertStringToListTopic(this.casts, 1)
             film.directors = this.convertStringToListTopic(this.directors, 2)
+
+            film.tags = this.convertStringToListTopic(this.tags, 4)
 
             const poster = this.$refs.posterInput.files[0] || this.film.poster
             const banner = this.$refs.bannerInput.files[0] || this.film.banner
@@ -266,6 +273,8 @@ export default {
 
             this.casts = (this.film.casts || []).map((cast) => cast.name).join(', ')
             this.directors = (this.film.directors || []).map((director) => director.name).join(', ')
+
+            this.tags= (this.film.tags || []).map((tag) => tag.name).join(', ')
         },
 
         chooseLink(link, event) {
