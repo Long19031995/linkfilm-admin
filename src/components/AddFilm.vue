@@ -185,6 +185,12 @@ export default {
 
             await axios.post('http://45.76.145.91:8080/apilink/admin/film/insertOrUpdate', formData)
 
+            this.film = {
+                chapters: [],
+                banner: '',
+                poster: ''
+            }
+
             this.loading = false
         },
 
