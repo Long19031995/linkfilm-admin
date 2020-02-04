@@ -51,7 +51,8 @@
         <td><input v-model="film.chapterTotal" type="text"></td>
       </tr>
     </table>
-
+    <br/>
+    <br/>
     <table>
       <tr>
         <td>Tập phim</td>
@@ -71,9 +72,11 @@
             <input v-model="chapter.duration" type="text">
           </td>
           <td>
+            <br/>
             <button @click="addLink(index)">Thêm link +</button>
           </td>
           <td>
+            <br/>
             <button @click="deleteChapter(index)">Xóa tập -</button>
           </td>
         </tr>
@@ -103,6 +106,10 @@
         </tr>
       </template>
     </table>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
   </div>
 </template>
 
@@ -209,7 +216,7 @@ export default {
                 var reader = new FileReader()
 
                 reader.onload = (e) => {
-                    this.film[type] = ""//chỗ này tao xử lý hơi ngu, nhưng nó lại hoạt động, có gì sửa giúp tao
+                    this.film[type] = "" //chỗ này tao xử lý hơi ngu, nhưng nó lại hoạt động, có gì sửa giúp tao
                     this.film[type] = e.target.result
                 }
 
@@ -274,7 +281,7 @@ export default {
             this.casts = (this.film.casts || []).map((cast) => cast.name).join(', ')
             this.directors = (this.film.directors || []).map((director) => director.name).join(', ')
 
-            this.tags= (this.film.tags || []).map((tag) => tag.name).join(', ')
+            this.tags = (this.film.tags || []).map((tag) => tag.name).join(', ')
         },
 
         chooseLink(link, event) {
