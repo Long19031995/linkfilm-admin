@@ -1,0 +1,72 @@
+.hover-pointer {
+  cursor: pointer;
+}
+
+$opacities: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9;
+@each $opacity in $opacities {
+  .hover-opacity-#{$opacity} {
+    &:hover {
+      opacity: $opacity / 10;
+    }
+  }
+
+  .opacity-#{$opacity} {
+    opacity: $opacity / 10;
+  }
+}
+
+.overflow-auto {
+  overflow: auto;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.overflow-hidden-x {
+  overflow-x: hidden;
+}
+
+.overflow-hidden-y {
+  overflow-y: hidden;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-decoration-none {
+  text-decoration: none;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-hidden {
+  text-overflow: hidden;
+}
+
+.text-ellipsis {
+  text-overflow: ellipsis;
+}
+
+.text-nowrap {
+  white-space: nowrap;
+}

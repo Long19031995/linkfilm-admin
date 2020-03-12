@@ -69,6 +69,7 @@ export default {
 
             img {
                 height: 80px;
+                width: auto;
             }
 
             &:last-child {

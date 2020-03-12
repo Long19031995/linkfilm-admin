@@ -1,0 +1,18 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  .modal-close {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+  }
+  .modal-link {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  }
+}

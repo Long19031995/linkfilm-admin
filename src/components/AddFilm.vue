@@ -121,6 +121,7 @@
 </template>
 
 <script>
+/* eslint-disable no-console */
 import InputDropdown from './InputDropdown'
 import InputSearchFilm from './InputSearchFilm'
 import InputSearchLink from './InputSearchLink'
@@ -155,6 +156,7 @@ export default {
     },
 
     mounted() {
+        this.checkQuery()
         this.getReleases()
         this.getNations()
         this.getGenres()
@@ -163,6 +165,14 @@ export default {
     },
 
     methods: {
+        async checkQuery() {
+            const id = this.$route.query.id
+            if (id) {
+                const response = await axios.get(`http://45.76.145.91:8080/apilink/detail?id=${id}`)
+                this.chooseFilm(response.data.data.film)
+            }
+        },
+
         async addFilm() {
             this.loading = true
 

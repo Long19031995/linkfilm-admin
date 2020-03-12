@@ -1,0 +1,30 @@
+* {
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #e8edf0;
+    border-radius: 3px;
+  }
+}
+
+* {
+  font-family: myriad-pro-regular, arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+body {
+  overflow: hidden;
+}
+
+img {
+  width: 100%;
+}

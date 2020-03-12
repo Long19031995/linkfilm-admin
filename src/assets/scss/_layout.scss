@@ -1,0 +1,120 @@
+.flex {
+  display: flex;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-space-between {
+  justify-content: space-between;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.w100 {
+  width: 100%;
+}
+
+.h100 {
+  height: 100%;
+}
+
+.vw100 {
+  width: 100vw;
+}
+
+.vh100 {
+  height: 100vh;
+}
+
+.pos-rlt {
+  position: relative;
+}
+
+.pos-abs {
+  position: absolute;
+}
+
+$sizes:-0,-4,-8, -12, -16, -20, -24, -28, -32, 0, 4, 8, 12, 16, 20, 24, 28, 32, 64;
+
+@each $size in $sizes {
+  // padding
+  .p#{$size} {
+    padding: #{$size}px;
+  }
+  .pt#{$size} {
+    padding-top: #{$size}px;
+  }
+  .pr#{$size} {
+    padding-right: #{$size}px;
+  }
+  .pb#{$size} {
+    padding-bottom: #{$size}px;
+  }
+  .pl#{$size} {
+    padding-left: #{$size}px;
+  }
+  .px#{$size} {
+    padding-left: #{$size}px;
+    padding-right: #{$size}px;
+  }
+  .py#{$size} {
+    padding-top: #{$size}px;
+    padding-bottom: #{$size}px;
+  }
+
+  // margin
+  .m#{$size} {
+    margin: #{$size}px;
+  }
+  .mt#{$size} {
+    margin-top: #{$size}px;
+  }
+  .mr#{$size} {
+    margin-right: #{$size}px;
+  }
+  .mb#{$size} {
+    margin-bottom: #{$size}px;
+  }
+  .ml#{$size} {
+    margin-left: #{$size}px;
+  }
+  .mx#{$size} {
+    margin-left: #{$size}px;
+    margin-right: #{$size}px;
+  }
+  .my#{$size} {
+    margin-top: #{$size}px;
+    margin-bottom: #{$size}px;
+  }
+
+  // border-radius
+  .br#{$size} {
+    border-radius: #{$size}px;
+  }
+
+  // position
+  .t#{$size} {
+    top: #{$size}px;
+  }
+  .l#{$size} {
+    left: #{$size}px;
+  }
+  .b#{$size} {
+    bottom: #{$size}px;
+  }
+  .r#{$size} {
+    right: #{$size}px;
+  }
+}

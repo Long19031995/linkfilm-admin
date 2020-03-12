@@ -1,0 +1,65 @@
+$list-color: (
+  'white': $White,
+  'r50': $R50, 'r75': $R75, 'r100': $R100, 'r200': $R200, 'r400': $R400, 'r600': $R600, 'r800': $R800, 'r900': $R900,
+  'y50': $Y50, 'y75': $Y75, 'y100': $Y100, 'y200': $Y200, 'y400': $Y400, 'y600': $Y600, 'y800': $Y800, 'y900': $Y900,
+  'p50': $P50, 'p75': $P75, 'p100': $P100, 'p200': $P200, 'p400': $P400, 'p600': $P600, 'p800': $P800, 'p900': $P900,
+  'g50': $G50, 'g75': $G75, 'g100': $G100, 'g200': $G200, 'g400': $G400, 'g600': $G600, 'g800': $G800, 'g900': $G900,
+  'o50': $O50, 'o75': $O75, 'o100': $O100, 'o200': $O200, 'o400': $O400, 'o600': $O600, 'o800': $O800, 'o900': $O900,
+  'n50': $N50, 'n75': $N75, 'n100': $N100, 'n200': $N200, 'n400': $N400, 'n600': $N600, 'n800': $N800, 'n900': $N900,
+  'yellow': #f1ce2b, 'dark': #030d19, 'grey-light': #c0c0c0, 'grey-dark': #5b5b5b, 'grey': #6e6e6e, 'red': #e0132b, 'orange': #df7b32);
+
+.cl-white {
+  color: white;
+}
+.bg-white {
+  background: white;
+}
+.bd-white {
+  border: 1px solid white;
+}
+.bd-none {
+  border: none;
+}
+.hover-cl-white {
+  &:hover {
+    color: white;
+  }
+}
+@each $key, $value in $list-color {
+  .cl-#{$key} {
+    color: $value;
+  }
+  .bg-#{$key} {
+    background-color: $value;
+  }
+  .bdt-#{$key} {
+    border-top: 1px solid $value;
+  }
+  .bdr-#{$key} {
+    border-right: 1px solid $value;
+  }
+  .bdb-#{$key} {
+    border-bottom: 1px solid $value;
+  }
+  .bdl-#{$key} {
+    border-left: 1px solid $value;
+  }
+  .bd-#{$key} {
+    border: 1px solid $value;
+  }
+  .hover-cl-#{$key} {
+    &:hover {
+      color: $value;
+    }
+  }
+  .hover-bg-#{$key} {
+    &:hover {
+      background: $value;
+    }
+  }
+  .hover-bd-#{$key} {
+    &:hover {
+      border: 1px solid $value;
+    }
+  }
+}
